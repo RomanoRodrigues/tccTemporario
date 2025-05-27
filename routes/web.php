@@ -9,7 +9,21 @@ use Illuminate\Support\Facades\Route;
 //Rota Home
     Route::get('/', [HomeController::class, 'index'])->name('home');
 
+//Rotas de Login
+Route::get('/login', 
+[   'as' => 'login',
+    'uses'=>'App\Http\Controllers\loginController@index']);
+
+Route::post('/login/entrar',
+[   'as'=>'login.entrar',
+    'uses'=>'App\Http\Controllers\loginController@entrar']);
+
+Route::get('/login/sair',
+[   'as'=>'login.sair',
+    'uses'=>'App\Http\Controllers\loginController@sair']);
+
 //Rotas de paciente
+Route::middleware('auth')->group( function () {
     Route::get('/paciente', [PacienteController::class, 'index']
     )->name('paciente.index');
 
@@ -34,9 +48,10 @@ use Illuminate\Support\Facades\Route;
 
     Route::delete('/deletar-paciente/{paciente}',
     [PacienteController::class, 'deletar'])->name('paciente.deletar');
+});
 
 //Rotas de médico - ainda em desenvolvimento    
-
+Route::middleware('auth')->group( function () {
     Route::get('/medico', [MedicoController::class, 'index']
     )->name('medico.index');
 
@@ -61,6 +76,7 @@ use Illuminate\Support\Facades\Route;
 
     Route::delete('/deletar-medico/{medico}',
     [MedicoController::class, 'deletar'])->name('medico.deletar');
+});
 
 
     

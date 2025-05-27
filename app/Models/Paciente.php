@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Paciente extends Model{
 
-    use SoftDeletes; // <- Habilita exclusão lógica
+    use SoftDeletes, Authenticatable; // <- Habilita exclusão lógica
 
     protected $table = 'pacientes';
     protected $primaryKey = 'id_paciente';
