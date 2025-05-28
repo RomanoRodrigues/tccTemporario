@@ -23,7 +23,7 @@ Route::get('/login/sair',
     'uses'=>'App\Http\Controllers\loginController@sair']);
 
 //Rotas de paciente
-Route::middleware('auth')->group( function () {
+Route::middleware('auth:paciente')->group( function () {
     Route::get('/paciente', [PacienteController::class, 'index']
     )->name('paciente.index');
 
@@ -51,7 +51,7 @@ Route::middleware('auth')->group( function () {
 });
 
 //Rotas de médico - ainda em desenvolvimento    
-Route::middleware('auth')->group( function () {
+Route::middleware('auth:medico')->group( function () {
     Route::get('/medico', [MedicoController::class, 'index']
     )->name('medico.index');
 

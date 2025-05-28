@@ -7,7 +7,7 @@
 </head>
 <body>
     <a href="{{ route('medico.criar') }}">Cadastrar</a><br>
-    <a href="{{ route('home') }}">Voltar a página inicial</a><br>
+    <a href="{{ route('login.sair') }}">Sair</a><br>
 
     <h2>Listar Medicos</h2>
 
